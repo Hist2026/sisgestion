@@ -13,3 +13,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//rutas de  configuracion  
+
+Route::get('/admin/configuracion', [App\Http\Controllers\ConfiguracionController::class, 'index'])->name('homeadmin.configuracion.index')->middleware('auth');
+Route::get('/admin/configuracion/create', [App\Http\Controllers\ConfiguracionController::class, 'store'])->name('homeadmin.configuracion.store')->middleware('auth');
+

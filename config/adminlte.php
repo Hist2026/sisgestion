@@ -304,6 +304,7 @@ return [
             'icon' => 'fas fa-fw fa-cog',
             'text' => 'Configuracion',
             'url' => 'admin/configuracion',
+            'classes' => 'bg-blue text-white',
         ],
 
         [
