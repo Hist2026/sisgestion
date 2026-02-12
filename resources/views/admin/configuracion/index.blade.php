@@ -24,7 +24,27 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                         dasdas
+                         <div class="col-md-12">
+                                    <div class="form-group">
+                                            <label for="for">Logo de la institucion</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> <i class="fas fa-image"></i></span>
+                                                       
+                                                    </div>
+                                                <input  onchange="mostrarImagen(event)" accept="image/*" type="file" class="form-control" value="{{ old('logo', $configuracion->logo ?? '') }}" name="logo"  required>
+                                                </div>
+                                                    <br>
+                                                <img id="preview" style="max-width: 300px; margin-top: 10px;">
+                                        @error('logo')
+                                            <small style="color: red">{{ $message}}</small>
+                                        @enderror
+                                         <script>
+                                            const mostrarImagen = e =>
+                                                document.getElementById('preview').src = URL.createObjectURL(e.target.files[0]);
+                                        </script>
+                                    </div>
+                            </div>
                     </div>
 
                     <div class="col-md-8">
@@ -127,6 +147,44 @@
                                         </div>
                                 </div>
 
+
+
+                        </div>
+
+                        <div class="row">
+                                 <div class="col-md-6">
+                                        <div class="form-group">
+                                                <label for="for">correo</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"> <i class="fas fa-envelope"></i></span>
+                                                        
+                                                        </div>
+                                                    <input type="text" class="form-control" value="{{ old('correo', $configuracion->correo ?? '') }} " name="correo" placeholder="escribe tu correo" required>
+                                                    </div>
+                                    
+                                            @error('correo')
+                                                <small style="color: red">{{ $message}}</small>
+                                            @enderror
+                                        </div>
+                                </div>
+
+                                  <div class="col-md-6">
+                                        <div class="form-group">
+                                                <label for="for">web</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"> <i class="fas fa-globe"></i></span>
+                                                        
+                                                        </div>
+                                                    <input type="text" class="form-control" value="{{ old('web', $configuracion->web ?? '') }} " name="web" placeholder="escribe tu web" required>
+                                                    </div>
+                                    
+                                            @error('web')
+                                                <small style="color: red">{{ $message}}</small>
+                                            @enderror
+                                        </div>
+                                </div>
 
 
                         </div>
