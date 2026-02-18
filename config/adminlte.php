@@ -306,6 +306,13 @@ return [
             'url' => 'admin/configuracion',
             'classes' => 'bg-blue text-white',
         ],
+           [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-tasks',
+            'text' => 'Gestiones',
+            'url' => 'admin/gestiones',
+            'classes' => 'bg-blue text-white',
+        ],
 
         [
             'type' => 'navbar-search',

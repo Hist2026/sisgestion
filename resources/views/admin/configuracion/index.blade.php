@@ -20,8 +20,8 @@
      
      
 
-        <form action="">
-
+        <form action="{{ url('/admin/configuracion/create') }}" method="post" enctype="multipart/form-data" >
+            @csrf
                 <div class="row">
                     <div class="col-md-4">
                          <div class="col-md-12">
@@ -35,7 +35,11 @@
                                                 <input  onchange="mostrarImagen(event)" accept="image/*" type="file" class="form-control" value="{{ old('logo', $configuracion->logo ?? '') }}" name="logo"  required>
                                                 </div>
                                                     <br>
-                                                <img id="preview" style="max-width: 300px; margin-top: 10px;">
+                                                    <center>
+
+<img id="preview" src="{{  url($configuracion->logo) }}" style="max-width: 300px; margin-top: 10px;">
+                                                    </center>
+                                                
                                         @error('logo')
                                             <small style="color: red">{{ $message}}</small>
                                         @enderror
@@ -189,6 +193,22 @@
 
                         </div>
 
+                     </div>
+
+
+
+                     <div class="row">
+                            <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <a href="{{ url('/admin/configuracion') }}"  class="btn btn-default" > <i class="fas fa-arrow-left"> </i>cancelar</a>
+                                        
+                                        <button type="submit"  class="btn btn-primary" >Aceptar</button>
+                                    
+                                    </div>
+
+                            </div>
+                     
                      </div>
                 </div>
         </form>
