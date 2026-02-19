@@ -73,24 +73,50 @@ return redirect()->route('admin.gestiones.index')->with('success','Lagestion ha 
     {
         //
 
-        
+        $gestion = Gestion::find($id);
+return view('admin.gestiones.edit', compact('gestion'));
 
-        echo $id;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Gestion $gestion)
+    public function update(Request $request, $id)
     {
         //
+
+            $request->validate([
+
+                'nombre' => 'required | max:255 |unique:gestions,nombre,'.$id,
+
+
+            ]);
+
+            $gestion = Gestion::find($id);
+
+             $gestion->nombre = $request->nombre; 
+             $gestion->save();
+
+
+             return redirect()->route('admin.gestiones.index')->with('successs', 'Actualizado Crorrectamente');
+
+         
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gestion $gestion)
+    public function destroy( $id)
     {
         //
+echo $id;
+        $gestion = Gestion::find($id);
+
+        $gestion->delete();
+        return redirect()->route('admin.gestiones.index')->with('successs', 'La gestion se HA ELIMINADO CORRECTAMENTE');
+
+
+
     }
 }

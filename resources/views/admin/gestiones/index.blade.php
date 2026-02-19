@@ -20,12 +20,21 @@
         
                 <div class="info-box-content">
                     <span class="info-box-text"><b>Gestiones Educativa</b></span>
-                    <span class="info-box-number"> {{ $gestion->nombre }}</span>
+                    <span class="info-box-number" style="color: blue;"> {{ $gestion->nombre }}</span>
             
                         <div class="row">
 
                             <a href="{{url('/admin/gestiones/'.$gestion->id.'/edit')}}" class="btn btn-success btn-sm"  ><i class="fas fa-pencil-alt"></i>editar </a>
-                                                    <a href="" class="btn btn-danger btn-sm"  ><i class="fas fa-trash"></i>borrar </a>
+                            
+                            
+<form action="{{ route('admin.gestiones.destroy', $gestion->id) }}" method="POST" id="miFormulario{{ $gestion->id }}">
+
+    @csrf
+    @method('DELETE')
+
+    <button type="button" class="btn btn-danger btn-sm" onclick="preguntar({{ $gestion->id }})"><i class="fas fa-trash"></i> Eliminar</button>
+</form>
+
 
                         </div>
             
@@ -52,5 +61,28 @@
 @stop
 
 @section('js')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function preguntar(id) {
+
+    Swal.fire({
+        title: '¿Desea eliminar este registro?',
+        icon: 'question',
+        showDenyButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#a5161d',
+        denyButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('miFormulario' + id).submit();
+        }
+    });
+
+}
+</script>
+
+
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
 @stop
