@@ -22,7 +22,12 @@
                     <span class="info-box-text"><b>Gestiones Educativa</b></span>
                     <span class="info-box-number"> {{ $gestion->nombre }}</span>
             
-                
+                        <div class="row">
+
+                            <a href="{{url('/admin/gestiones/'.$gestion->id.'/edit')}}" class="btn btn-success btn-sm"  ><i class="fas fa-pencil-alt"></i>editar </a>
+                                                    <a href="" class="btn btn-danger btn-sm"  ><i class="fas fa-trash"></i>borrar </a>
+
+                        </div>
             
                 </div>
         

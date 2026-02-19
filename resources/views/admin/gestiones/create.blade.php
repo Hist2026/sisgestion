@@ -28,7 +28,7 @@
 
                     <div class="col-md-8">
                         <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                             <label for="for">nombre</label>
                                                 <div class="input-group mb-3">
@@ -36,7 +36,7 @@
                                                         <span class="input-group-text"> <i class="fas fa-university"></i></span>
                                                        
                                                     </div>
-                                                <input type="text" class="form-control" value="{{ old('nombre', $configuracion->nombre ?? '') }} " name="nombre" placeholder="escribe tu nombre" required>
+                                                <input type="text" class="form-control" value="{{ old('nombre') }} " name="nombre" placeholder="escribe tu nombre" required>
                                                 </div>
                                    
                                         @error('nombre')
@@ -57,7 +57,7 @@
                             <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <a href="{{ url('/admin/configuracion') }}"  class="btn btn-default" > <i class="fas fa-arrow-left"> </i>cancelar</a>
+                                        <a href="{{ url('/admin/gestiones') }}"  class="btn btn-default" > <i class="fas fa-arrow-left"> </i>cancelar</a>
                                         
                                         <button type="submit"  class="btn btn-primary" >Aceptar</button>
                                     

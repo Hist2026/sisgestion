@@ -34,6 +34,28 @@ class GestionController extends Controller
     public function store(Request $request)
     {
         //
+
+        
+
+
+// $datos = request()->all();
+
+    
+//return response()->json($datos); 
+
+    $request->validate([
+    'nombre' => 'required  | max:255 |unique :gestions',
+
+
+
+    ]);
+
+    $gestion =new Gestion();
+    $gestion->nombre = $request->nombre;
+$gestion->save();
+
+return redirect()->route('admin.gestiones.index')->with('success','Lagestion ha sido ctreada correstamente');
+
     }
 
     /**
@@ -47,9 +69,13 @@ class GestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Gestion $gestion)
+    public function edit($id)
     {
         //
+
+        
+
+        echo $id;
     }
 
     /**
