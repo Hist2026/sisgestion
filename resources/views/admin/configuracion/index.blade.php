@@ -227,5 +227,21 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+
+@if(session('mensaje'))
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+Swal.fire({
+    position: "top-end",
+    icon: "{{ session('icono') }}",
+    title: "{{ session('mensaje') }}",
+    showConfirmButton: false,
+    timer: 4000
+});
+</script>
+@endif
+
 @stop

@@ -91,7 +91,8 @@ if($request->hasFile('logo')){
 
             $configuracion->save();
 
-        return redirect()->route('admin.configuracion.index')->with('success', 'Configuracion actualizada correctamente');
+        return redirect()->route('admin.configuracion.index')
+        ->with('mensaje', 'Configuracion actualizada correctamente')->with('icono', 'success');
 
           // $configuracion->update($request->all());
 
@@ -130,7 +131,8 @@ if($request->hasFile('logo')){
                 }
 
                $configuracion->save();  
-     return redirect()->route('admin.configuracion.index')->with('success', 'Configuracion creada Correctamente');
+                return redirect()->route('admin.configuracion.index')
+                ->with('mensaje', 'Configuracion actualizada correctamente')->with('icono', 'success');
 
          }
 

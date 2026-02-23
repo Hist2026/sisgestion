@@ -109,8 +109,7 @@ return view('admin.gestiones.edit', compact('gestion'));
      */
     public function destroy( $id)
     {
-        //
-echo $id;
+        //echo $id;
         $gestion = Gestion::find($id);
 
         $gestion->delete();

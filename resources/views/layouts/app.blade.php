@@ -76,5 +76,23 @@
             @yield('content')
         </main>
     </div>
+
+
+<script>
+
+
+Swal.fire({
+
+    position: "top-end",
+    icon: "{{$icono}}",
+    title : "{{ $mensaje}}",
+    showConfirmButton: false,
+    timer :4000
+
+
+});
+
+</script>
+
 </body>
 </html>
