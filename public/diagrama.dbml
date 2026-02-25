@@ -19,7 +19,17 @@ Table gestiones {
 
 id int [pk, increment] //Primary key
 nombre varchar
+}
 
 
+Table niveles{
+
+id int [pk, increment //primary key]
+nombre varchar
 
 }
+
+
+
+
+
