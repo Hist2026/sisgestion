@@ -37,7 +37,7 @@
                                                     <br>
                                                     <center>
 
-<img id="preview" src="{{  url($configuracion->logo) }}" style="max-width: 300px; margin-top: 10px;">
+<img id="preview" src="{{  url($configuracion && $configuracion->logo ? url($configuracion->logo) : '') }}" style="max-width: 300px; margin-top: 10px;">
                                                     </center>
                                                 
                                         @error('logo')
@@ -182,7 +182,10 @@
                                                         
                                                         </div>
                                                     <input type="text" class="form-control" value="{{ old('web', $configuracion->web ?? '') }} " name="web" placeholder="escribe tu web" required>
-                                                    </div>
+                                                    
+                                                
+                                                
+                                                </div>
                                     
                                             @error('web')
                                                 <small style="color: red">{{ $message}}</small>

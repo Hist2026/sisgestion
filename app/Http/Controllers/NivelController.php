@@ -33,6 +33,22 @@ class NivelController extends Controller
     public function store(Request $request)
     {
         //
+
+         $request->validate([
+    'nombre' => 'required  | max:255 |unique :nivels',
+
+
+
+    ]);
+
+    $nivel =new Nivel();
+    $nivel->nombre = $request->nombre;
+    $nivel->save();
+
+
+        return redirect()->route('admin.nivel.index')
+        ->with('mensaje', 'Configuracion actualizada correctamente')->with('icono', 'success');
+
     }
 
     /**
@@ -54,9 +70,25 @@ class NivelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Nivel $nivel)
+    public function update(Request $request, $id)
     {
         //
+
+            $request->validate([
+
+                'nombre' => 'required | max:255 |unique:nivels,nombre,'.$id,
+
+
+            ]);
+
+            $nivel = Nivel::find($id);
+
+             $nivel->nombre = $request->nombre; 
+             $nivel->save();
+
+
+             return redirect()->route('admin.nivel.index')->with('successs', 'Actualizado Crorrectamente');
+
     }
 
     /**
