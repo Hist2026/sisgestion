@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Nivel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class NivelController extends Controller
 {
@@ -37,12 +39,10 @@ class NivelController extends Controller
          $request->validate([
     'nombre' => 'required  | max:255 |unique :nivels',
 
-
-
     ]);
 
     $nivel =new Nivel();
-    $nivel->nombre = $request->nombre;
+    $nivel->nombre = $request->nombre_create;
     $nivel->save();
 
 
@@ -74,12 +74,22 @@ class NivelController extends Controller
     {
         //
 
-            $request->validate([
+        $validate = Validator::make($request->all(), [
+            'nombre' => 'required | max:255 |unique:nivels,nombre,'.$id, 
+        ]);
 
-                'nombre' => 'required | max:255 |unique:nivels,nombre,'.$id,
+        if($validate->fails())
+            {
+                return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withinput()
+                ->with('modal_id', $id);
 
 
-            ]);
+            }
+
+            
 
             $nivel = Nivel::find($id);
 
@@ -94,8 +104,15 @@ class NivelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Nivel $nivel)
+    public function destroy( $id)
     {
         //
+
+$nivel = Nivel::find($id);
+$nivel->delete();
+return redirect()->route('admin.nivel.index')
+->with('mensaje', 'El nivel se ha eliminado')
+->with('icono','success');
+
     }
 }

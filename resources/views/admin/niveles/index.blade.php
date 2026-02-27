@@ -10,7 +10,7 @@
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
 
         
             <div class="card card-outline card-primary">
@@ -20,12 +20,12 @@
                     <div class="card-tools">
                     
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                                 Crear nuevo Nivel
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header" style="background-color: #007bff ; color:aliceblue">
@@ -54,10 +54,10 @@
                                                                         <span class="input-group-text"> <i class="fas fa-layer-group"></i></span>
                                                                     
                                                                     </div>
-                                                                <input type="text" class="form-control" value="{{ old('nombre') }} " name="nombre" placeholder="escribe tu nombre" required>
+                                                                <input type="text" class="form-control" value="{{ old('nombre_create') }} " name="nombre_create" placeholder="escribe tu nombre" required>
                                                                 </div>
                                                 
-                                                        @error('nombre')
+                                                        @error('nombre_create')
                                                             <small style="color: red">{{ $message}}</small>
                                                         @enderror
                                                     </div>
@@ -79,17 +79,11 @@
                                     </div>
                                 </div> 
                                 </div>
-
-                     
-
-
-
-                        
                     </div>
                 </div>
                 <div class="card-body">
                    
-                        <table class="table">
+                        <table class="table table-bordered table-striped  table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th>N°</th>
@@ -106,10 +100,19 @@
                                     <td scope="row">{{ $nivel->nombre }}  </td>
                                     <td class="text-center">
 
-                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModal{{ $nivel->id}}"> 
+                                       <div class="row d-flex justify-content-center">
+                                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModal{{ $nivel->id}}"> 
                                             <i class="fas fa-pencil-alt">Editar</i>
                                         </button>
-                                        
+
+                                        <form action="{{ route('admin.nivel.destroy', $nivel->id) }}" method="POST" id="miFormulario{{ $nivel->id }}">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="preguntar({{ $nivel->id }})"><i class="fas fa-trash"></i> Eliminar</button>
+                                        </form>
+                                       </div>
+
 
                                                               <!-- Modal editar-->
                                                                     <div class="modal fade" id="updateModal{{$nivel->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,15 +148,13 @@
                                                                                                     </div>
                                                                                     
                                                                                             @error('nombre')
+
                                                                                                 <small style="color: red">{{ $message}}</small>
+
                                                                                             @enderror
                                                                                         </div>
                                                                                     </div>
-
-
                                                                                 </div>
-
-
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                                     <button type="submit"  class="btn btn-success" >Actualizar</button>
@@ -169,8 +170,7 @@
                                                                      <!-- fin Modal editar-->
                                     </td>
                                 </tr>
-                          
-
+                        
                             @endforeach
                             </tbody>
                         </table>
@@ -219,12 +219,50 @@ Swal.fire({
 
 @if($errors->any())
 
-    <script>
-        $(document).ready(function (){
+<script>
+    $(document).ready(function (){
 
-        $('#modalCreate').modal('show');
-        });
-    </script>
+        @if(session('modal_id'))
+
+            $('#updateModal{{ session('modal_id') }}').modal('show');
+        
+        
+            @else
+            $('#createModal').modal('show');
+        @endif
+
+    });
+</script>
 @endif
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function preguntar(id) {
+
+    Swal.fire({
+        title: '¿Desea eliminar este registro?',
+        icon: 'question',
+        showDenyButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#a5161d',
+        denyButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('miFormulario' + id).submit();
+        }
+    });
+
+}
+</script>
+
+
+    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+
+
+
+
 @stop
+
