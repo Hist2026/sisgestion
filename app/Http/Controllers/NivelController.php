@@ -35,7 +35,7 @@ class NivelController extends Controller
     public function store(Request $request)
     {
         //
-
+ 
          $request->validate([
     'nombre' => 'required  | max:255 |unique :nivels',
 
