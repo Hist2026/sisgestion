@@ -313,8 +313,7 @@ return [
             'url' => 'admin/gestiones',
             'classes' => 'bg-blue text-white',
         ],
-
- [
+        [
            // 'can' => 'admin.gestiones.index',
             'icon' => 'fas fa-fw fa-layer-group',
             'text' => 'Nivel',
@@ -322,6 +321,13 @@ return [
             'classes' => 'bg-blue text-white',
         ],
 
+        [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-clock',
+            'text' => 'Turno',
+            'url' => 'admin/turnos',
+            'classes' => 'bg-blue text-white',
+        ],
 
 
         [

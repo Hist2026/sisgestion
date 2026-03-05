@@ -31,5 +31,14 @@ nombre varchar
 
 
 
+Table turnos {
+
+        id int [pk, increment]     //primary key
+        nombre varchar
+
+}
+
+
+
 
 

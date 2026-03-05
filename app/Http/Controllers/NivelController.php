@@ -37,7 +37,7 @@ class NivelController extends Controller
         //
  
          $request->validate([
-    'nombre' => 'required  | max:255 |unique :nivels',
+            'nombre_create' => 'required  | max:255 |unique:nivels,nombre',
 
     ]);
 

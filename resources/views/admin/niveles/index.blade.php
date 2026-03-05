@@ -7,12 +7,8 @@
 @stop
 
 @section('content')
-
-
 <div class="row">
     <div class="col-md-8">
-
-        
             <div class="card card-outline card-primary">
 
                 <div class="card-header">
@@ -38,11 +34,8 @@
                                         
 
 
-                                        <form action="{{ url('/admin/niveles/create')}}" method="post" >
-
-                                        
-                                        @csrf
-
+                                    <form action="{{ route('admin.nivel.store') }}" method="POST">
+                                            @csrf
                                             <div class="row">
 
                                                 <div class="col-md-12">
@@ -82,7 +75,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   
                         <table class="table table-bordered table-striped  table-hover table-sm">
                             <thead>
                                 <tr>
@@ -96,7 +88,7 @@
 
                             @foreach($niveles as $nivel)
                                 <tr>
-                                    <td scope="row">{{ $nivel->id }}  </td>
+                                    <td scope="row">{{ $loop->iteration }}  </td>
                                     <td scope="row">{{ $nivel->nombre }}  </td>
                                     <td class="text-center">
 
@@ -126,11 +118,7 @@
                                                                         </div>
                                                                         <div class="modal-body text-dark">
                                                                             
-
-
-                                                                            <form action="{{ url('/admin/niveles/'.$nivel->id)}}" method="post" >
-
-                                                                            
+                                                                            <form action="{{ url('/admin/niveles/'.$nivel->id)}}" method="post">
                                                                             @csrf
                                                                             @method('PUT')
                                                                                 <div class="row">
@@ -176,20 +164,9 @@
                         </table>
                 </div>
             </div>
-
-
-       
-
-
     </div>
 </div>
 
-
-
-   
-
-
-    
 
 
 @stop
@@ -258,11 +235,6 @@ function preguntar(id) {
 }
 </script>
 
-
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
-
-
-
-
 @stop
 

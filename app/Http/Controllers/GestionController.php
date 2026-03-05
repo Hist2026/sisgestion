@@ -44,7 +44,7 @@ class GestionController extends Controller
 //return response()->json($datos); 
 
     $request->validate([
-    'nombre' => 'required  | max:255 |unique :gestions',
+    'nombre' => 'required  | max:255 |unique:gestions',
 
 
 

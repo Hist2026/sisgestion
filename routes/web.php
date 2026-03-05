@@ -40,6 +40,10 @@ Route::get('/admin/niveles', [App\Http\Controllers\NivelController::class, 'inde
 Route::get('/admin/niveles/create', [App\Http\Controllers\NivelController::class, 'create'])->name('admin.nivel.create')->middleware('auth');
 Route::post('/admin/niveles/create', [App\Http\Controllers\NivelController::class, 'store'])->name('admin.nivel.store')->middleware('auth');
 
+
+
+
+
 Route::get('/admin/niveles/{id}/edit', [App\Http\Controllers\NivelController::class, 'edit'])->name('admin.nivel.edit')->middleware('auth');
 
 Route::put('/admin/niveles/{id}', [App\Http\Controllers\NivelController::class, 'update'])->name('admin.nivel.update')->middleware('auth');
