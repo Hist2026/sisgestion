@@ -13,6 +13,10 @@ class TurnoController extends Controller
     public function index()
     {
         //
+
+        $turnos = Turno::all();
+
+        return view('admin.turnos.index',compact('turnos'));
     }
 
     /**

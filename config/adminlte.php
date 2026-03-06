@@ -328,8 +328,6 @@ return [
             'url' => 'admin/turnos',
             'classes' => 'bg-blue text-white',
         ],
-
-
         [
             'type' => 'navbar-search',
             'text' => 'search',
