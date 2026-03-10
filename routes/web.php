@@ -41,21 +41,14 @@ Route::get('/admin/niveles/create', [App\Http\Controllers\NivelController::class
 Route::post('/admin/niveles/create', [App\Http\Controllers\NivelController::class, 'store'])->name('admin.nivel.store')->middleware('auth');
 
 
-
-
-
-Route::get('/admin/niveles/{id}/edit', [App\Http\Controllers\NivelController::class, 'edit'])->name('admin.nivel.edit')->middleware('auth');
-
 Route::put('/admin/niveles/{id}', [App\Http\Controllers\NivelController::class, 'update'])->name('admin.nivel.update')->middleware('auth');
 Route::delete('/admin/niveles/{id}', [App\Http\Controllers\NivelController::class, 'destroy'])->name('admin.nivel.destroy')->middleware('auth');
 
 
 ///rutas turnos
 Route::get('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'index'])->name('admin.turno.index')->middleware('auth');
-Route::get('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'create'])->name('admin.turno.create')->middleware('auth');
-Route::post('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.store')->middleware('auth');
+Route::post('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.store')->middleware('auth');
 
-Route::get('/admin/turnos/{id}/edit', [App\Http\Controllers\TurnoController::class, 'edit'])->name('admin.turno.edit')->middleware('auth');
 Route::put('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'update'])->name('admin.turno.update')->middleware('auth');
 Route::delete('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'destroy'])->name('admin.turno.destroy')->middleware('auth');
 

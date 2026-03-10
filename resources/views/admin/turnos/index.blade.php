@@ -25,7 +25,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header" style="background-color: #007bff ; color:aliceblue">
-                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Registro de un Nuevo Nivel</h5>
+                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Registro de un Nuevo Turno</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -34,7 +34,7 @@
                                         
 
 
-                                    <form action="{{ route('admin.nivel.store') }}" method="POST">
+                                    <form action="{{ route('admin.turno.store') }}" method="POST">
                                             @csrf
                                             <div class="row">
 
@@ -97,8 +97,11 @@
                                             <i class="fas fa-pencil-alt">Editar</i>
                                         </button>
 
-                                        <form action="{{ route('admin.resources/views/admin/niveles.destroy', $resources/views/admin/niveles->id) }}" method="POST" id="miFormulario{{ $turno->id }}">
-                                            @csrf
+                                    <form action="{{ route('admin.turno.destroy', $turno->id) }}" method="POST" id="miFormulario{{ $turno->id }}">
+
+                                        
+                                        
+                                        @csrf
                                             @method('DELETE')
 
                                             <button type="button" class="btn btn-danger btn-sm" onclick="preguntar({{ $turno->id }})"><i class="fas fa-trash"></i> Eliminar</button>
@@ -107,18 +110,23 @@
 
 
                                                               <!-- Modal editar-->
-                                                                    <div class="modal fade" id="updateModal{{$resources/views/admin/niveles->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    
+                                                                    <div class="modal fade" id="updateModal{{$turno->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                                 
+                                                                 
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
-                                                                        <div class="modal-header" style="background-color: #7bff00 ; color:aliceblue">
-                                                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Editar resources/views/admin/niveles</h5>
+                                                                        <div class="modal-header" style="background-color: #00e1ff ; color:aliceblue">
+                                                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Editar Turno</h5>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body text-dark">
                                                                             
-                                                                            <form action="{{ url('/admin/resources/views/admin/turnos/'.$turno->id)}}" method="post">
+                                                                         <form action="{{ url('/admin/turnos/'.$turno->id)}}" method="post">
+
                                                                             @csrf
                                                                             @method('PUT')
                                                                                 <div class="row">
@@ -129,10 +137,10 @@
                                                                                                 <label for="for">nombre</label>
                                                                                                     <div class="input-group mb-3">
                                                                                                         <div class="input-group-prepend">
-                                                                                                            <span class="input-group-text"> <i class="fas fa-layer-group"></i></span>
+                                                                                                            <span class="input-group-text"> <i class="fas fa-clock"></i></span>
                                                                                                         
                                                                                                         </div>
-                                                                                                    <input type="text" class="form-control" value="{{ old('nombre', $nivel->nombre) }} " name="nombre" placeholder="escribe tu nombre" required>
+                                                                                                       <input type="text" class="form-control" value="{{ old('nombre', $turno->nombre) }} " name="nombre" placeholder="escribe tu nombre" required>
                                                                                                     </div>
                                                                                     
                                                                                             @error('nombre')
@@ -158,7 +166,6 @@
                                                                      <!-- fin Modal editar-->
                                     </td>
                                 </tr>
-                        
                             @endforeach
                             </tbody>
                         </table>

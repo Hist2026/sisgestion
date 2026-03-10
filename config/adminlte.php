@@ -315,6 +315,13 @@ return [
         ],
         [
            // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-calendar-alt',
+            'text' => 'Periodos',
+            'url' => 'admin/periodos',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
+           // 'can' => 'admin.gestiones.index',
             'icon' => 'fas fa-fw fa-layer-group',
             'text' => 'Nivel',
             'url' => 'admin/niveles',
