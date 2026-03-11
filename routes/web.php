@@ -47,10 +47,19 @@ Route::delete('/admin/niveles/{id}', [App\Http\Controllers\NivelController::clas
 
 ///rutas turnos
 Route::get('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'index'])->name('admin.turno.index')->middleware('auth');
-Route::post('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.store')->middleware('auth');
+Route::get('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.create')->middleware('auth');
+Route::post('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.store')->middleware('auth');
+
 
 Route::put('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'update'])->name('admin.turno.update')->middleware('auth');
 Route::delete('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'destroy'])->name('admin.turno.destroy')->middleware('auth');
+
+///rutas PERIODOS
+Route::get('/admin/periodos', [App\Http\Controllers\PeriodoController::class, 'index'])->name('admin.periodos.index')->middleware('auth');
+Route::post('/admin/periodos', [App\Http\Controllers\PeriodoController::class, 'store'])->name('admin.periodos.store')->middleware('auth');
+
+Route::put('/admin/periodos/{id}', [App\Http\Controllers\PeriodoController::class, 'update'])->name('admin.periodos.update')->middleware('auth');
+Route::delete('/admin/periodos/{id}', [App\Http\Controllers\PeriodoController::class, 'destroy'])->name('admin.periodos.destroy')->middleware('auth');
 
 
 

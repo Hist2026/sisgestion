@@ -49,9 +49,10 @@ class TurnoController extends Controller
     $turno->save();
     
 
-
         return redirect()->route('admin.turno.index')
-        ->with('mensaje', 'Turno creado correctamente')->with('icono', 'success');
+        ->with('mensaje', 'Turno creado correctamente')
+        ->with('icono', 'success');
+
 
     }
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Periodo;
+use App\Models\Gestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PeriodoController extends Controller
 {
@@ -14,8 +16,12 @@ class PeriodoController extends Controller
     {
         //
 
-        $periodos = Periodo::with('gestion')->get();
-        return view('admin.periodos.index', compact('periodos'));
+        //$periodos = Periodo::with('gestion')->get();
+        $gestiones = Gestion::with('periodos')->orderBy('nombre', 'asc')
+        ->get();
+        
+        return view('admin.periodos.index', compact('gestiones'));
+
     }
 
     /**
@@ -32,6 +38,32 @@ class PeriodoController extends Controller
     public function store(Request $request)
     {
         //
+
+        //  $datos = request()->all();
+        //   return response()->json($datos);
+
+        $request->validate([
+        'nombre_create' =>  'required | string | max:255',
+        'gestion_create' => 'required | exists:gestions,id'
+          
+
+        ]);
+
+$periodo =new Periodo();
+
+$periodo->nombre = $request->nombre_create;
+$periodo->gestion_id = $request->gestion_create;
+
+$periodo->save();
+
+
+return redirect()->route('admin.periodos.index')
+->with('mensaje', 'El periodo rtttttttttttttttttttttttttttttttAcademico fue creado Correctamente')
+->with('icono', 'success');
+
+
+
+
     }
 
     /**

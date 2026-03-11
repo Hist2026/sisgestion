@@ -333,6 +333,7 @@ return [
             'icon' => 'fas fa-fw fa-clock',
             'text' => 'Turno',
             'url' => 'admin/turnos',
+
             'classes' => 'bg-blue text-white',
         ],
         [
