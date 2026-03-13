@@ -85,9 +85,36 @@ return redirect()->route('admin.periodos.index')
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Periodo $periodo)
+    public function update(Request $request, $id)
     {
         //
+
+
+        $validate = Validator::make($request->all(), [
+            'nombre' => 'required | max:255 |unique:periodos,nombre,'.$id, 
+        ]);
+
+        if($validate->fails())
+            {
+                return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withinput()
+                ->with('modal_id', $id);
+
+
+            }
+
+            
+
+            $periodo = Periodo::find($id);
+
+             $periodo->nombre = $request->nombre; 
+             $periodo->save();
+
+
+             return redirect()->route('admin.periodos.index')->with('successs', 'Actualizado Crorrectamente');
+
     }
 
     /**

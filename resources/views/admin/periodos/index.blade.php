@@ -120,7 +120,9 @@
                                     <th>N°</th>
                                      <th>Gestion</th>
                                       <th>Periodos</th>
-                                       <th>Accionesasssssssssssss</th>
+                                       <th>Accionesas
+                                         9
+                                       </th>
                                     
                                 </tr>
                             </thead>
@@ -146,20 +148,112 @@
 
                                     <td>
                                              @foreach($gestion->periodos as $periodo)
-
-                                                <button type="button " class="btn btn-success btn-sm" data-toggle="modal" data-target="updateModal{{ $periodo->id }}">
+                                            <div class="row d-flex justify-content-center">
+                                                <button type="button " class="btn btn-success btn-sm py-0 px-2" data-toggle="modal" data-target="#updateModal{{ $periodo->id }}">
                                                     <i class="fa fa-pencil-alt">Editar</i>
                                                 </button>
                                                 <form action="{{ '/admin/periodos'.$periodo->id }}" method="post" id="miFormulario{{ $periodo->id }}">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="preguntar{{ $periodo->id}}(event)">
+                                                        <button type="submit" class="btn btn-danger btn-sm py-0 px-2" onclick="preguntar{{ $periodo->id}}(event)">
                                                                 <i class="fas fa-trash"></i>Eliminar
                                                         </button>
 
                                                 </form>
-                                        @endforeach
+                                            </div>
+
+
+                                             <!-- Modal editar-->
+                                                                    <div class="modal fade" id="updateModal{{$periodo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                        <div class="modal-header" style="background-color: #7bff00 ; color:aliceblue">
+                                                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Editar Periodo</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body text-dark">
+                                                                            
+                                                                            <form action="{{ url('/admin/periodos/'.$periodo->id)}}" method="post">
+                                                                            @csrf
+                                                                            @method('PUT')
+
+
+                                                                                                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                            <label for="for">Gestiones</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"> <i class="fas fa-university"></i></span>
+                                                                    
+                                                                    </div>
+
+                                                                    <select class="form-control" id="gestion_create" name="gestion_create" required>
+                                                                        <option value="">Seleccione una gestion</option>
+                                                                        @foreach($gestiones as $gestion)
+
+                                                                            <option value="{{ $gestion->id }}">
+                                                                                    {{ $gestion->nombre }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                
+                                                            
+                                                            </div>
+                                                
+                                                        @error('gestion_create')
+                                                            <small style="color: red">{{ $message}}</small>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-12">
+
+                                                                                        <div class="form-group">
+                                                                                                <label for="for">nombre</label>
+                                                                                                    <div class="input-group mb-3">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <span class="input-group-text"> <i class="fas fa-layer-group"></i></span>
+                                                                                                        
+                                                                                                        </div>
+                                                                                                    <input type="text" class="form-control" value="{{ old('nombre', $periodo->nombre) }} " name="nombre" placeholder="resgistra nuevo periodo" required>
+                                                                                                    </div>
+                                                                                    
+                                                                                            @error('nombre')
+
+                                                                                                <small style="color: red">{{ $message}}</small>
+
+                                                                                            @enderror
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit"  class="btn btn-success" >Actualizar</button>
+
+                                                                                </div> 
+
+                                                                            </form>
+                                                                        </div>
+                                                                    
+                                                                        </div>
+                                                                    </div> 
+                                                                    </div>
+                                                                     <!-- fin Modal editar-->
+                                            @endforeach
 
 
                                     </td>
@@ -212,7 +306,6 @@ Swal.fire({
 
 <script>
     $(document).ready(function (){
-
         @if(session('modal_id'))
 
             $('#updateModal{{ session('modal_id') }}').modal('show');
@@ -221,7 +314,6 @@ Swal.fire({
             @else
             $('#createModal').modal('show');
         @endif
-
     });
 </script>
 @endif
