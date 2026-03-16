@@ -4,11 +4,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard <p> <b>Bienvenido :</b>{{ Auth::user()->name}}   </p></h1>
+    <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p> <b>Bienvenido :</b>{{ Auth::user()->name}}   </p>
 @stop
 
 @section('css')

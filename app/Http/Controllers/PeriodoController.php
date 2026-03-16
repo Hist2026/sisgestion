@@ -44,7 +44,7 @@ class PeriodoController extends Controller
 
         $request->validate([
         'nombre_create' =>  'required | string | max:255',
-        'gestion_create' => 'required | exists:gestions,id'
+        'gestion_id_create' => 'required | exists:gestions,id'
           
 
         ]);
@@ -52,13 +52,13 @@ class PeriodoController extends Controller
 $periodo =new Periodo();
 
 $periodo->nombre = $request->nombre_create;
-$periodo->gestion_id = $request->gestion_create;
+$periodo->gestion_id = $request->gestion_id_create;
 
 $periodo->save();
 
 
 return redirect()->route('admin.periodos.index')
-->with('mensaje', 'El periodo rtttttttttttttttttttttttttttttttAcademico fue creado Correctamente')
+->with('mensaje', 'El periodo  fue creado Correctamente')
 ->with('icono', 'success');
 
 
@@ -91,7 +91,8 @@ return redirect()->route('admin.periodos.index')
 
 
         $validate = Validator::make($request->all(), [
-            'nombre' => 'required | max:255 |unique:periodos,nombre,'.$id, 
+            'gestion_id' => 'required |exists:gestions,id',
+            'nombre' => 'required | string | max:255', 
         ]);
 
         if($validate->fails())
@@ -113,15 +114,27 @@ return redirect()->route('admin.periodos.index')
              $periodo->save();
 
 
-             return redirect()->route('admin.periodos.index')->with('successs', 'Actualizado Crorrectamente');
-
+             return redirect()->route('admin.periodos.index')
+             ->with('mensaje', 'Actualizado  Correctamente')
+            ->with('icono', 'success');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Periodo $periodo)
+    public function destroy( $id)
     {
         //
+
+
+        $periodo = Periodo::find($id);
+
+        $periodo->delete();
+
+        return redirect()->route('admin.periodos.index')
+        ->with('mensaje', 'El periodo fue eliminado')
+        ->with('icono', 'success');
+
+
     }
 }

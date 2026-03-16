@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-10">
             <div class="card card-outline card-primary">
 
                 <div class="card-header">
@@ -49,7 +49,7 @@
                                                                     
                                                                     </div>
 
-                                                                    <select class="form-control" id="gestion_create" name="gestion_create" required>
+                                                                    <select class="form-control" id="gestion_create" name="gestion_id_create" required>
                                                                         <option value="">Seleccione una gestion</option>
                                                                         @foreach($gestiones as $gestion)
 
@@ -63,7 +63,7 @@
                                                             
                                                             </div>
                                                 
-                                                        @error('gestion_create')
+                                                        @error('gestion_id_create')
                                                             <small style="color: red">{{ $message}}</small>
                                                         @enderror
                                                     </div>
@@ -120,9 +120,7 @@
                                     <th>N°</th>
                                      <th>Gestion</th>
                                       <th>Periodos</th>
-                                       <th>Accionesas
-                                         9
-                                       </th>
+                                       <th>Accionesas</th>
                                     
                                 </tr>
                             </thead>
@@ -140,7 +138,7 @@
                                     <td>                                    
                                         @foreach($gestion->periodos as $periodo)
 
-                                        <span class="badge badge-info">{{ $periodo->nombre }}</span><br>
+                                        <span class="badge badge-info btn-block">{{ $periodo->nombre }}</span><br>
 
                                         @endforeach
 
@@ -152,11 +150,14 @@
                                                 <button type="button " class="btn btn-success btn-sm py-0 px-2" data-toggle="modal" data-target="#updateModal{{ $periodo->id }}">
                                                     <i class="fa fa-pencil-alt">Editar</i>
                                                 </button>
-                                                <form action="{{ '/admin/periodos'.$periodo->id }}" method="post" id="miFormulario{{ $periodo->id }}">
-                                                    @csrf
+                                     <form action="{{ route('admin.periodos.destroy',$periodo->id) }}" method="POST" id="miFormulario{{ $periodo->id }}">
+                                                
+                                                
+                                                
+                                                @csrf
                                                     @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-danger btn-sm py-0 px-2" onclick="preguntar{{ $periodo->id}}(event)">
+                                                        <button type="submit" class="btn btn-danger btn-sm py-0 px-2" onclick="preguntar({{ $periodo->id}},event)">
                                                                 <i class="fas fa-trash"></i>Eliminar
                                                         </button>
 
@@ -181,8 +182,7 @@
                                                                             @method('PUT')
 
 
-                                                                                                                            <div class="row">
-
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                             <label for="for">Gestiones</label>
@@ -192,11 +192,11 @@
                                                                     
                                                                     </div>
 
-                                                                    <select class="form-control" id="gestion_create" name="gestion_create" required>
+                                                                    <select class="form-control" id="gestion_create" name="gestion_id" required>
                                                                         <option value="">Seleccione una gestion</option>
                                                                         @foreach($gestiones as $gestion)
 
-                                                                            <option value="{{ $gestion->id }}">
+                                                                            <option value="{{ $gestion->id }}" {{ $gestion->id == $periodo->gestion_id ? 'selected' : '' }}>
                                                                                     {{ $gestion->nombre }}
                                                                             </option>
                                                                         @endforeach
@@ -211,8 +211,6 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
-
                                             </div>
 
 
@@ -323,8 +321,8 @@ Swal.fire({
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-function preguntar(id) {
-
+function preguntar(id, event) {
+ event.preventDefault(); 
     Swal.fire({
         title: '¿Desea eliminar este registro?',
         icon: 'question',

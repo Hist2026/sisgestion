@@ -327,6 +327,14 @@ return [
             'url' => 'admin/niveles',
             'classes' => 'bg-blue text-white',
         ],
+         [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'text' => 'Grados',
+            'url' => 'admin/grados',
+            'classes' => 'bg-blue text-white', 
+        ],
+
 
         [
            // 'can' => 'admin.gestiones.index',
