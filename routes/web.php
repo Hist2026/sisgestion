@@ -2,9 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('/admin');
+
+
+//     redirect
+// });
+
+
+ Route::get('/', function () {
+     return view('welcome');
+
+
+     
+ });
+
 
 
 
@@ -13,12 +25,12 @@ Auth::routes(['register'=> false]);
 
 
 
+Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index.home')->middleware('auth');
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index.home')->middleware('auth');;
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index')->middleware('auth');
 
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');;
 
 
 //rutas de  configuracion  
@@ -67,5 +79,12 @@ Route::post('/admin/periodos', [App\Http\Controllers\PeriodoController::class, '
 Route::put('/admin/periodos/{id}', [App\Http\Controllers\PeriodoController::class, 'update'])->name('admin.periodos.update')->middleware('auth');
 Route::delete('/admin/periodos/{id}', [App\Http\Controllers\PeriodoController::class, 'destroy'])->name('admin.periodos.destroy')->middleware('auth');
 
+
+///rutas GRADOS
+Route::get('/admin/grados', [App\Http\Controllers\GradoController::class, 'index'])->name('admin.grados.index')->middleware('auth');
+Route::post('/admin/grados', [App\Http\Controllers\GradoController::class, 'store'])->name('admin.grados.store')->middleware('auth');
+
+Route::put('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, 'update'])->name('admin.grados.update')->middleware('auth');
+Route::delete('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, 'destroy'])->name('admin.grados.destroy')->middleware('auth');
 
 

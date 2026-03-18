@@ -14,7 +14,6 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        //
 
         //$periodos = Periodo::with('gestion')->get();
         $gestiones = Gestion::with('periodos')->orderBy('nombre', 'asc')
@@ -49,17 +48,17 @@ class PeriodoController extends Controller
 
         ]);
 
-$periodo =new Periodo();
+            $periodo =new Periodo();
 
-$periodo->nombre = $request->nombre_create;
-$periodo->gestion_id = $request->gestion_id_create;
+            $periodo->nombre = $request->nombre_create;
+            $periodo->gestion_id = $request->gestion_id_create;
 
-$periodo->save();
+            $periodo->save();
 
 
-return redirect()->route('admin.periodos.index')
-->with('mensaje', 'El periodo  fue creado Correctamente')
-->with('icono', 'success');
+            return redirect()->route('admin.periodos.index')
+            ->with('mensaje', 'El periodo  fue creado Correctamente')
+            ->with('icono', 'success');
 
 
 
@@ -125,8 +124,6 @@ return redirect()->route('admin.periodos.index')
     public function destroy( $id)
     {
         //
-
-
         $periodo = Periodo::find($id);
 
         $periodo->delete();

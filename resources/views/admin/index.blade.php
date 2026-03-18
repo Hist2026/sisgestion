@@ -5,10 +5,50 @@
 
 @section('content_header')
     <h1>Dashboard</h1>
+    <p> <b>Bienvenido :</b>{{ Auth::user()->name}}   </p>
 @stop
 
 @section('content')
-    <p> <b>Bienvenido :</b>{{ Auth::user()->name}}   </p>
+    
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 col-12">
+
+                <div class="info-box zoomP">
+                    <img src="{{ url('/img/hogar.gif') }}" width="70px" alt="">
+                    
+                    <div class="info-box-content">
+
+                        <span class="info-box-text">Gestiones Rgistradas</span>
+                    <span class="info-box-text">{{ $total_gestiones }} gestiones</span>
+                    
+                    </div>
+                
+                
+                </div>
+
+        </div>
+
+          <div class="col-md-3 col-sm-6 col-12">
+
+                <div class="info-box zoomP">
+                    <img src="{{ url('/img/calendario.gif') }}" width="70px" alt="">
+                    
+                    <div class="info-box-content">
+
+                        <span class="info-box-text">Gestiones Rgistradas</span>
+                    <span class="info-box-text">{{ $total_periodos }} periodos</span>
+                    
+                    </div>
+                
+                
+                </div>
+
+        </div>
+
+
+    </div>
 @stop
 
 @section('css')
