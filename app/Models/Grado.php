@@ -27,6 +27,17 @@ class Grado extends Model
 
 
 }
+
+
+
+public function paralelos(){
+
+
+return $this->hasMany(Paralelo::class);
+
+
+
+}
     ///
 
 

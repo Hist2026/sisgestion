@@ -329,9 +329,16 @@ return [
         ],
          [
            // 'can' => 'admin.gestiones.index',
-            'icon' => 'fas fa-fw fa-list-alt',
+            'icon' => 'fas fa-fw fa-clone',
             'text' => 'Grados',
             'url' => 'admin/grados',
+            'classes' => 'bg-blue text-white', 
+        ],
+        [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'text' => 'Paralelos',
+            'url' => 'admin/paralelos',
             'classes' => 'bg-blue text-white', 
         ],
 

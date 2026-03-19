@@ -88,3 +88,11 @@ Route::put('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, '
 Route::delete('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, 'destroy'])->name('admin.grados.destroy')->middleware('auth');
 
 
+///rutas Paralelos
+Route::get('/admin/paraelos', [App\Http\Controllers\ParaleloController::class, 'index'])->name('admin.paraelos.index')->middleware('auth');
+Route::post('/admin/paraelos', [App\Http\Controllers\ParaleloController::class, 'store'])->name('admin.paraelos.store')->middleware('auth');
+
+Route::put('/admin/paraelos/{id}', [App\Http\Controllers\ParaleloController::class, 'update'])->name('admin.paraelos.update')->middleware('auth');
+Route::delete('/admin/paraelos/{id}', [App\Http\Controllers\ParaleloController::class, 'destroy'])->name('admin.paraelos.destroy')->middleware('auth');
+
+

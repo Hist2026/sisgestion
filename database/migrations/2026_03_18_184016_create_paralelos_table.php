@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('paralelos', function (Blueprint $table) {
+
             $table->id();
 
             $table->foreignId('grado_id')->constrained('grados')->onDelete('cascade');
-           $table->string('nombre');
+            $table->string('nombre');
             $table->timestamps();
+
         });
     }
 
