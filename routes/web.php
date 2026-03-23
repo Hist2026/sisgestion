@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Route;
 //     redirect
 // });
 
-
  Route::get('/', function () {
      return view('welcome');
-
-
-     
  });
 
 
@@ -29,6 +25,8 @@ Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->nam
 
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index')->middleware('auth');
+
+
 
 
 
@@ -65,7 +63,7 @@ Route::delete('/admin/niveles/{id}', [App\Http\Controllers\NivelController::clas
 
 ///rutas turnos
 Route::get('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'index'])->name('admin.turno.index')->middleware('auth');
-Route::get('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.create')->middleware('auth');
+// Route::get('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.create')->middleware('auth');
 Route::post('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'store'])->name('admin.turno.store')->middleware('auth');
 
 
@@ -89,10 +87,10 @@ Route::delete('/admin/grados/{id}', [App\Http\Controllers\GradoController::class
 
 
 ///rutas Paralelos
-Route::get('/admin/paraelos', [App\Http\Controllers\ParaleloController::class, 'index'])->name('admin.paraelos.index')->middleware('auth');
-Route::post('/admin/paraelos', [App\Http\Controllers\ParaleloController::class, 'store'])->name('admin.paraelos.store')->middleware('auth');
+Route::get('/admin/paralelos', [App\Http\Controllers\ParaleloController::class, 'index'])->name('admin.paralelos.index')->middleware('auth');
+Route::post('/admin/paralelos', [App\Http\Controllers\ParaleloController::class, 'store'])->name('admin.paralelos.store')->middleware('auth');
 
-Route::put('/admin/paraelos/{id}', [App\Http\Controllers\ParaleloController::class, 'update'])->name('admin.paraelos.update')->middleware('auth');
-Route::delete('/admin/paraelos/{id}', [App\Http\Controllers\ParaleloController::class, 'destroy'])->name('admin.paraelos.destroy')->middleware('auth');
+Route::put('/admin/paralelos/{id}', [App\Http\Controllers\ParaleloController::class, 'update'])->name('admin.paralelos.update')->middleware('auth');
+Route::delete('/admin/paralelos/{id}', [App\Http\Controllers\ParaleloController::class, 'destroy'])->name('admin.paralelos.destroy')->middleware('auth');
 
 
