@@ -341,6 +341,13 @@ return [
             'url' => 'admin/paralelos',
             'classes' => 'bg-blue text-white', 
         ],
+        [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-book-open',
+            'text' => 'Materias',
+            'url' => 'admin/materias',
+            'classes' => 'bg-blue text-white', 
+        ],
 
 
         [
@@ -351,6 +358,16 @@ return [
 
             'classes' => 'bg-blue text-white',
         ],
+
+     [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-clock',
+            'text' => 'Rol',
+            'url' => 'admin/roles',
+
+            'classes' => 'bg-blue text-white',
+        ],
+
         [
             'type' => 'navbar-search',
             'text' => 'search',
