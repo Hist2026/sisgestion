@@ -13,6 +13,33 @@ return new class extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuario_id')->constrained('grados')->onDelete('cascade');    
+
+            
+
+
+
+
+
+     int [ref: > user.id]
+    nombre varchar 
+    nivel_id int [ref: >grados.id]
+    apellidos varchar
+   
+    tipo varchar
+    ci varchar
+
+    fecha_nacimiento date
+
+    direccion varchar
+    telefono varchar
+
+
+
+profesion varchar
+
+
+
             $table->timestamps();
         });
     }

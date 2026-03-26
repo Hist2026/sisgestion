@@ -86,7 +86,7 @@ Table personals {
 
 
 
-PROFESION varchar
+profesion varchar
 
 
 }
