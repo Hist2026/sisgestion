@@ -25,11 +25,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+
+        $this->call(RoleSeeder::class);
         User::create([
             'name' => 'admin',
-            'email' => 'ejemplot@gmail.com',
+            'email' => 'ejemplo@gmail.com',
             'password' => Hash::make('12345678'),
-        ]);
+        ])->assignRole('ADMINISTRADOR');
 
 
 Configuracion::create([

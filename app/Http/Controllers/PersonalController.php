@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personal;
 use Illuminate\Http\Request;
 
-
-
-
-
-
-class RoleController extends Controller
+class PersonalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +34,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Personal $personal)
     {
         //
     }
@@ -46,7 +42,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Personal $personal)
     {
         //
     }
@@ -54,7 +50,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Personal $personal)
     {
         //
     }
@@ -62,7 +58,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Personal $personal)
     {
         //
     }
