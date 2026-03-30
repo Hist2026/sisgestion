@@ -21,22 +21,22 @@ return new class extends Migration
 
 
 
-     int [ref: > user.id]
-    nombre varchar 
-    nivel_id int [ref: >grados.id]
-    apellidos varchar
+//      int [ref: > user.id]
+//     nombre varchar 
+//     nivel_id int [ref: >grados.id]
+//     apellidos varchar
    
-    tipo varchar
-    ci varchar
+//     tipo varchar
+//     ci varchar
 
-    fecha_nacimiento date
+//     fecha_nacimiento date
 
-    direccion varchar
-    telefono varchar
+//     direccion varchar
+//     telefono varchar
 
 
 
-profesion varchar
+// profesion varchar
 
 
 

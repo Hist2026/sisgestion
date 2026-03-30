@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+use Spatie\Permission\Models\Role;
 
 
 
@@ -17,6 +17,9 @@ class RoleController extends Controller
     public function index()
     {
         //
+
+        $roles = Role::all();
+        return view('admin.roles.index',compact('roles'));
     }
 
     /**
@@ -25,6 +28,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        return view('admin.roles.create' );
     }
 
     /**
@@ -33,6 +37,30 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        // $datos = request()->all();
+        // return response()->json($datos);
+
+
+        $request->validate([
+
+            'name' => 'required',
+ 
+         ]);
+
+ 
+
+ $rol = new Role();
+
+ $rol->name = $request->name; 
+ $rol->guard_name = 'web';
+    $rol->save();
+    
+
+        return redirect()->route('admin.roles.index')
+        ->with('mensaje', 'Rol creado correctamente')
+        ->with('icono', 'success');
     }
 
     /**
@@ -46,9 +74,19 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
+
+   
+
+$rol = Role::findOrFail($id);
+
+
+
+return view('admin.roles.edit', compact('rol'));
+
+
     }
 
     /**
