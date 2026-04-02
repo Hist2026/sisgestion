@@ -10,9 +10,15 @@ class PersonalController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($tipo)
     {
         //
+
+
+
+        $personals = Personal::where('tipo',$tipo)->get();
+
+        return view('admin.personal.index', compact('personals','tipo'));
     }
 
     /**

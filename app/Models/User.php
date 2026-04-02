@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 
+use App\Models\Personal;
+
 
 class User extends Authenticatable
 {
@@ -49,4 +51,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+public function personal(){
+
+    return $this->hasOne(Personal::class);
+
+
+
+}
+
+
+
+
 }

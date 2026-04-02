@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     //
+
+    public function usuario(){
+
+    return $this->belongsTo(User::class);
+
+
+
+}
 }

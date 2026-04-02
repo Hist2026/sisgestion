@@ -13,30 +13,25 @@ return new class extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('grados')->onDelete('cascade');    
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');    
+            $table->enum('tipo',['docente','administrativo']);
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('ci')->unique();
+            $table->date('fecha_nacimiento');
+            $table->string('telefono')->nullable();
+            $table->string('direccion')->nullable();
 
-            
-
-
-
-
-
-//      int [ref: > user.id]
-//     nombre varchar 
-//     nivel_id int [ref: >grados.id]
-//     apellidos varchar
-   
-//     tipo varchar
-//     ci varchar
-
-//     fecha_nacimiento date
-
-//     direccion varchar
-//     telefono varchar
+            $table->string('profexion')->nullable();
 
 
 
-// profesion varchar
+
+
+
+
+
+
 
 
 

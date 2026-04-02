@@ -64,14 +64,21 @@ Table paralelos {
 
 }
 
+Table Users {
 
+
+    id int [pk, increment]
+        name varchar
+        email varchar
+        password varchar
+}
 
 
 Table personals {
 
 
     id int [pk, increment]
-    usuario_id int [ref: > user.id]
+    usuario_id int [ref: > users.id]
     nombre varchar 
     nivel_id int [ref: >grados.id]
     apellidos varchar

@@ -368,11 +368,36 @@ return [
             'classes' => 'bg-blue text-white',
         ],
 
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
+          [
+           // 'can' => 'admin.gestiones.index',
+            'icon' => 'fas fa-fw fa-clock',
+            'text' => 'Adminstrativos',
+            'url' => 'admin/administrativos',
+
+            'classes' => 'bg-blue text-white',
         ],
+
+        [
+            'icon' => 'fas fa-fw fa-users-cog',
+            'text' => 'Personal',
+            'classes' => 'bg-blue text-white',
+
+                'submenu' => [
+                            [
+                                'text' => 'Administrativo',
+                                'url' => 'admin/personal/administrativo',
+                            ],
+                             [
+                                'text' => 'docente',
+                                'url' => 'admin/personal/docente',
+                            ],
+                    ],
+
+
+  ],
+
+
+
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
