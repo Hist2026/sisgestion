@@ -22,7 +22,11 @@ return new class extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
 
-            $table->string('profexion')->nullable();
+
+   $table->string('foto');
+
+
+            $table->string('profesion')->nullable();
 
 
 
