@@ -21,23 +21,9 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
-
-
-   $table->string('foto');
-
-
+            $table->string('foto');
             $table->string('profesion')->nullable();
-
-
-
-
-
-
-
-
-
-
-
+        
 
             $table->timestamps();
         });

@@ -37,7 +37,7 @@
                                                     <br>
                                                     <center>
 
-<img id="preview" src="{{  url($configuracion && $configuracion->logo ? url($configuracion->logo) : '') }}" style="max-width: 300px; margin-top: 10px;">
+                                                <img id="preview" src="{{  url($configuracion && $configuracion->logo ? url($configuracion->logo) : '') }}" style="max-width: 300px; margin-top: 10px;">
                                                     </center>
                                                 
                                         @error('logo')

@@ -121,7 +121,7 @@ Route::get('/admin/personal/{tipo}', [App\Http\Controllers\PersonalController::c
 Route::get('/admin/personal/create/{tipo}', [App\Http\Controllers\PersonalController::class, 'create'])->name('admin.personal.create')->middleware('auth');
 Route::post('/admin/personal/create', [App\Http\Controllers\PersonalController::class, 'store'])->name('admin.personal.store')->middleware('auth');
 
-Route::get('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'show'])->name('admin.personal.store')->middleware('auth');
+Route::get('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'show'])->name('admin.personal.show')->middleware('auth');
 
 Route::get('/admin/personal/{id}/edit', [App\Http\Controllers\PersonalController::class, 'edit'])->name('admin.personal.edit')->middleware('auth');
 
